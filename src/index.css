@@ -1,0 +1,97 @@
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'Nunito', sans-serif; border: none; background: none; outline: none; }
+img { max-width: 100%; display: block; }
+input, select, textarea { font-family: 'Nunito', sans-serif; outline: none; }
+ul { list-style: none; }
+
+/* ── HOPSCOTCH EXACT DESIGN TOKENS ── */
+:root {
+  /* Hopscotch brand colours — exact */
+  --hops-purple:       #67218C;
+  --hops-purple-dark:  #4e1a6a;
+  --hops-purple-light: #f5eefb;
+  --hops-purple-mid:   #8b35b8;
+  --hops-pink:         #e91e8c;
+  --hops-pink-light:   #fde8f4;
+  --hops-orange:       #f47b20;
+  --hops-green:        #5cb85c;
+  --hops-red:          #d9534f;
+  --hops-yellow:       #f0ad4e;
+  --hops-gray-text:    #555;
+  --hops-gray-light:   #f8f8f8;
+  --hops-border:       #e8e8e8;
+  --hops-border-dark:  #ddd;
+
+  /* Hopscotch Typography Scale */
+  --hops-font:         'Nunito', sans-serif;
+  --hops-font-logo:    'Pacifico', cursive;
+
+  /* Shadows */
+  --hops-shadow-card:  0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --hops-shadow-hover: 0 4px 14px rgba(0,0,0,0.12);
+  --hops-shadow-modal: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+/* Hopscotch scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb { background: #67218C; border-radius: 3px; }
+
+/* Hopscotch section heading style */
+.hops-section-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #333;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+}
+.hops-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 48px; height: 3px;
+  background: var(--hops-purple);
+  border-radius: 2px;
+}
+
+/* Hopscotch button styles */
+.hops-btn-primary {
+  background: var(--hops-purple);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: var(--hops-font);
+}
+.hops-btn-primary:hover { background: var(--hops-purple-dark); }
+
+.hops-btn-outline {
+  background: #fff;
+  color: var(--hops-purple);
+  border: 2px solid var(--hops-purple);
+  border-radius: 4px;
+  padding: 10px 26px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--hops-font);
+}
+.hops-btn-outline:hover { background: var(--hops-purple); color: #fff; }
+
+/* Global responsive */
+@media (max-width: 768px) { body { font-size: 14px; } }
