@@ -1,0 +1,134 @@
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #333;
+  background: #fff;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'Nunito', sans-serif; border: none; background: none; outline: none; }
+img { max-width: 100%; display: block; }
+input, select, textarea { font-family: 'Nunito', sans-serif; outline: none; }
+ul { list-style: none; }
+
+/* ── BASHABOS BRAND DESIGN TOKENS (logo: red B + yellow B + blue cap + navy outline) ── */
+:root {
+  /* Primary — Blue cap */
+  --bb-blue:         #2B6DD6;
+  --bb-blue-dark:    #1E4FA8;
+  --bb-blue-light:   #EEF4FD;
+  --bb-blue-mid:     #4A87E8;
+
+  /* Accent — Red B */
+  --bb-red:          #E84040;
+  --bb-red-dark:     #C42D2D;
+  --bb-red-light:    #FEEEEE;
+
+  /* Accent — Orange (logo wordmark: "Basha") */
+  --bb-orange:       #F2740D;
+  --bb-orange-dark:  #D45F00;
+
+  /* Highlight — Yellow B */
+  --bb-yellow:       #F5C518;
+  --bb-yellow-dark:  #D4A914;
+  --bb-yellow-light: #FFFBEE;
+
+  /* Dark — Navy outline */
+  --bb-navy:         #1A2650;
+  --bb-navy-mid:     #2A3870;
+
+  /* Neutrals */
+  --bb-green:        #27ae60;
+  --bb-green-light:  #e8f8f0;
+  --bb-gray-text:    #555;
+  --bb-gray-light:   #f8f8f8;
+  --bb-border:       #e8e8e8;
+  --bb-border-dark:  #ddd;
+
+  /* Typography */
+  --bb-font:         'Nunito', sans-serif;
+  --bb-font-logo:    'Playfair Display', serif;
+
+  /* Shadows */
+  --bb-shadow-card:  0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --bb-shadow-hover: 0 4px 14px rgba(43,109,214,0.15);
+  --bb-shadow-modal: 0 8px 32px rgba(0,0,0,0.15);
+
+  /* LEGACY ALIASES — keeps all existing components working without changes */
+  --hops-purple:       var(--bb-blue);
+  --hops-purple-dark:  var(--bb-blue-dark);
+  --hops-purple-light: var(--bb-blue-light);
+  --hops-purple-mid:   var(--bb-blue-mid);
+  --hops-pink:         var(--bb-red);
+  --hops-pink-light:   var(--bb-red-light);
+  --hops-orange:       var(--bb-yellow);
+  --hops-green:        var(--bb-green);
+  --hops-green-light:  var(--bb-green-light);
+  --hops-red:          var(--bb-red);
+  --hops-yellow:       var(--bb-yellow);
+  --hops-gray-text:    var(--bb-gray-text);
+  --hops-gray-light:   var(--bb-gray-light);
+  --hops-border:       var(--bb-border);
+  --hops-border-dark:  var(--bb-border-dark);
+  --hops-font:         var(--bb-font);
+  --hops-font-logo:    var(--bb-font-logo);
+  --hops-shadow-card:  var(--bb-shadow-card);
+  --hops-shadow-hover: var(--bb-shadow-hover);
+  --hops-shadow-modal: var(--bb-shadow-modal);
+}
+
+/* BB scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb { background: var(--bb-blue); border-radius: 3px; }
+
+/* Section heading */
+.hops-section-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #1A2650;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+}
+.hops-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--bb-blue), var(--bb-red));
+  border-radius: 2px;
+}
+
+/* Button styles */
+.hops-btn-primary {
+  background: var(--bb-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: var(--bb-font);
+}
+.hops-btn-primary:hover { background: var(--bb-blue-dark); }
+
+.hops-btn-outline {
+  background: #fff;
+  color: var(--bb-blue);
+  border: 2px solid var(--bb-blue);
+  border-radius: 6px;
+  padding: 10px 26px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--bb-font);
+}
+.hops-btn-outline:hover { background: var(--bb-blue); color: #fff; }
+
+@media (max-width: 768px) { body { font-size: 14px; } }
