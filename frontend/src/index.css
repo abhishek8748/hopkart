@@ -13,44 +13,82 @@ img { max-width: 100%; display: block; }
 input, select, textarea { font-family: 'Nunito', sans-serif; outline: none; }
 ul { list-style: none; }
 
-/* ── HOPSCOTCH EXACT DESIGN TOKENS ── */
+/* ── BASHABOS BRAND DESIGN TOKENS (logo: red B + yellow B + blue cap + navy outline) ── */
 :root {
-  /* Hopscotch brand colours — exact */
-  --hops-purple:       #67218C;
-  --hops-purple-dark:  #4e1a6a;
-  --hops-purple-light: #f5eefb;
-  --hops-purple-mid:   #8b35b8;
-  --hops-pink:         #e91e8c;
-  --hops-pink-light:   #fde8f4;
-  --hops-orange:       #f47b20;
-  --hops-green:        #5cb85c;
-  --hops-red:          #d9534f;
-  --hops-yellow:       #f0ad4e;
-  --hops-gray-text:    #555;
-  --hops-gray-light:   #f8f8f8;
-  --hops-border:       #e8e8e8;
-  --hops-border-dark:  #ddd;
+  /* Primary — Blue cap */
+  --bb-blue:         #2B6DD6;
+  --bb-blue-dark:    #1E4FA8;
+  --bb-blue-light:   #EEF4FD;
+  --bb-blue-mid:     #4A87E8;
 
-  /* Hopscotch Typography Scale */
-  --hops-font:         'Nunito', sans-serif;
-  --hops-font-logo:    'Pacifico', cursive;
+  /* Accent — Red B */
+  --bb-red:          #E84040;
+  --bb-red-dark:     #C42D2D;
+  --bb-red-light:    #FEEEEE;
+
+  /* Accent — Orange (logo wordmark: "Basha") */
+  --bb-orange:       #F2740D;
+  --bb-orange-dark:  #D45F00;
+
+  /* Highlight — Yellow B */
+  --bb-yellow:       #F5C518;
+  --bb-yellow-dark:  #D4A914;
+  --bb-yellow-light: #FFFBEE;
+
+  /* Dark — Navy outline */
+  --bb-navy:         #1A2650;
+  --bb-navy-mid:     #2A3870;
+
+  /* Neutrals */
+  --bb-green:        #27ae60;
+  --bb-green-light:  #e8f8f0;
+  --bb-gray-text:    #555;
+  --bb-gray-light:   #f8f8f8;
+  --bb-border:       #e8e8e8;
+  --bb-border-dark:  #ddd;
+
+  /* Typography */
+  --bb-font:         'Nunito', sans-serif;
+  --bb-font-logo:    'Playfair Display', serif;
 
   /* Shadows */
-  --hops-shadow-card:  0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
-  --hops-shadow-hover: 0 4px 14px rgba(0,0,0,0.12);
-  --hops-shadow-modal: 0 8px 32px rgba(0,0,0,0.15);
+  --bb-shadow-card:  0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --bb-shadow-hover: 0 4px 14px rgba(43,109,214,0.15);
+  --bb-shadow-modal: 0 8px 32px rgba(0,0,0,0.15);
+
+  /* LEGACY ALIASES — keeps all existing components working without changes */
+  --hops-purple:       var(--bb-blue);
+  --hops-purple-dark:  var(--bb-blue-dark);
+  --hops-purple-light: var(--bb-blue-light);
+  --hops-purple-mid:   var(--bb-blue-mid);
+  --hops-pink:         var(--bb-red);
+  --hops-pink-light:   var(--bb-red-light);
+  --hops-orange:       var(--bb-yellow);
+  --hops-green:        var(--bb-green);
+  --hops-green-light:  var(--bb-green-light);
+  --hops-red:          var(--bb-red);
+  --hops-yellow:       var(--bb-yellow);
+  --hops-gray-text:    var(--bb-gray-text);
+  --hops-gray-light:   var(--bb-gray-light);
+  --hops-border:       var(--bb-border);
+  --hops-border-dark:  var(--bb-border-dark);
+  --hops-font:         var(--bb-font);
+  --hops-font-logo:    var(--bb-font-logo);
+  --hops-shadow-card:  var(--bb-shadow-card);
+  --hops-shadow-hover: var(--bb-shadow-hover);
+  --hops-shadow-modal: var(--bb-shadow-modal);
 }
 
-/* Hopscotch scrollbar */
+/* BB scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f5f5f5; }
-::-webkit-scrollbar-thumb { background: #67218C; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--bb-blue); border-radius: 3px; }
 
-/* Hopscotch section heading style */
+/* Section heading */
 .hops-section-title {
   font-size: 22px;
   font-weight: 900;
-  color: #333;
+  color: #1A2650;
   position: relative;
   padding-bottom: 10px;
   margin-bottom: 24px;
@@ -60,38 +98,37 @@ ul { list-style: none; }
   position: absolute;
   bottom: 0; left: 0;
   width: 48px; height: 3px;
-  background: var(--hops-purple);
+  background: linear-gradient(90deg, var(--bb-blue), var(--bb-red));
   border-radius: 2px;
 }
 
-/* Hopscotch button styles */
+/* Button styles */
 .hops-btn-primary {
-  background: var(--hops-purple);
+  background: var(--bb-blue);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 12px 28px;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s;
-  font-family: var(--hops-font);
+  font-family: var(--bb-font);
 }
-.hops-btn-primary:hover { background: var(--hops-purple-dark); }
+.hops-btn-primary:hover { background: var(--bb-blue-dark); }
 
 .hops-btn-outline {
   background: #fff;
-  color: var(--hops-purple);
-  border: 2px solid var(--hops-purple);
-  border-radius: 4px;
+  color: var(--bb-blue);
+  border: 2px solid var(--bb-blue);
+  border-radius: 6px;
   padding: 10px 26px;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
-  font-family: var(--hops-font);
+  font-family: var(--bb-font);
 }
-.hops-btn-outline:hover { background: var(--hops-purple); color: #fff; }
+.hops-btn-outline:hover { background: var(--bb-blue); color: #fff; }
 
-/* Global responsive */
 @media (max-width: 768px) { body { font-size: 14px; } }

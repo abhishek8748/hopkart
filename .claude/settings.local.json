@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -X POST http://localhost:4000/api/admin/bootstrap -H \"Content-Type: application/json\" -d '{\"username\":\"bashabos\",\"password\":\"admin@123\"}')"
+    ]
+  }
+}

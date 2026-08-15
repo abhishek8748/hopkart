@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { SlidersHorizontal, X, ChevronDown, ChevronUp, Grid2X2, List } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
-import { products } from '../data/products'
+import { useProducts } from '../hooks/useProducts'
 
 const SORT = [
   { v:'popular', l:'Popularity' }, { v:'new', l:'Newest First' },
@@ -31,13 +31,14 @@ function Acc({ title, children, def=true }) {
 function RadioItem({ label, checked, onChange }) {
   return (
     <label style={{ display:'flex', alignItems:'center', gap:9, padding:'5px 0', cursor:'pointer' }}>
-      <input type="radio" checked={checked} onChange={onChange} style={{ accentColor:'var(--hops-purple)', width:15, height:15 }} />
+      <input type="radio" checked={checked} onChange={onChange} style={{ accentColor:'var(--bb-blue)', width:15, height:15 }} />
       <span style={{ fontSize:13, fontWeight:600, color:'#444' }}>{label}</span>
     </label>
   )
 }
 
 export default function Shop() {
+  const { products } = useProducts()
   const [params] = useSearchParams()
   const [sort, setSort]     = useState('popular')
   const [sub, setSub]       = useState(params.get('sub') || 'all')
@@ -61,7 +62,7 @@ export default function Shop() {
       default:         l.sort((a,b) => b.sold - a.sold)
     }
     return l
-  }, [sub, price, sort, params])
+  }, [products, sub, price, sort, params])
 
   const FilterContent = () => (
     <>
@@ -74,12 +75,12 @@ export default function Shop() {
         {PRICES.map(p => (
           <RadioItem key={p.l} label={p.l} checked={price?.l===p.l} onChange={() => setPrice(price?.l===p.l ? null : p)} />
         ))}
-        {price && <button onClick={() => setPrice(null)} style={{ fontSize:11, color:'var(--hops-pink)', fontWeight:800, background:'none', border:'none', cursor:'pointer', marginTop:4, padding:0 }}>Clear ×</button>}
+        {price && <button onClick={() => setPrice(null)} style={{ fontSize:11, color:'var(--bb-red)', fontWeight:800, background:'none', border:'none', cursor:'pointer', marginTop:4, padding:0 }}>Clear ×</button>}
       </Acc>
       <Acc title="Fabric">
         {['TENCEL™','Cotton','Cotton Pique'].map(f => (
           <label key={f} style={{ display:'flex', alignItems:'center', gap:9, padding:'5px 0', cursor:'pointer' }}>
-            <input type="checkbox" style={{ accentColor:'var(--hops-purple)', width:15, height:15 }} />
+            <input type="checkbox" style={{ accentColor:'var(--bb-blue)', width:15, height:15 }} />
             <span style={{ fontSize:13, fontWeight:600, color:'#444' }}>{f}</span>
           </label>
         ))}
@@ -87,7 +88,7 @@ export default function Shop() {
       <Acc title="Fit">
         {['Regular Fit','Oversized'].map(f => (
           <label key={f} style={{ display:'flex', alignItems:'center', gap:9, padding:'5px 0', cursor:'pointer' }}>
-            <input type="checkbox" style={{ accentColor:'var(--hops-purple)', width:15, height:15 }} />
+            <input type="checkbox" style={{ accentColor:'var(--bb-blue)', width:15, height:15 }} />
             <span style={{ fontSize:13, fontWeight:600, color:'#444' }}>{f}</span>
           </label>
         ))}
@@ -110,7 +111,7 @@ export default function Shop() {
           {[sub!=='all' && { l: sub.replace('-',' '), clear: () => setSub('all') }, price && { l: price.l, clear: () => setPrice(null) }]
             .filter(Boolean)
             .map(f => (
-              <span key={f.l} style={{ display:'flex', alignItems:'center', gap:5, background:'var(--hops-purple-light)', color:'var(--hops-purple)', fontSize:12, fontWeight:700, padding:'4px 12px', borderRadius:3, border:'1px solid #e0c8f0', textTransform:'capitalize' }}>
+              <span key={f.l} style={{ display:'flex', alignItems:'center', gap:5, background:'var(--hops-purple-light)', color:'var(--bb-blue)', fontSize:12, fontWeight:700, padding:'4px 12px', borderRadius:3, border:'1px solid #e0c8f0', textTransform:'capitalize' }}>
                 {f.l} <X size={11} style={{ cursor:'pointer' }} onClick={f.clear} />
               </span>
           ))}
@@ -122,7 +123,7 @@ export default function Shop() {
 
         {/* SIDEBAR — Hopscotch style */}
         <aside style={{ width:220, flexShrink:0, background:'#fff', border:'1px solid var(--hops-border)', borderRadius:6, padding:'18px 16px', position:'sticky', top:148 }} className="desk-sidebar">
-          <h3 style={{ fontSize:15, fontWeight:900, color:'#333', marginBottom:18, paddingBottom:10, borderBottom:'2px solid var(--hops-purple)' }}>
+          <h3 style={{ fontSize:15, fontWeight:900, color:'#333', marginBottom:18, paddingBottom:10, borderBottom:'2px solid var(--bb-blue)' }}>
             Filters
           </h3>
           <FilterContent />
@@ -132,7 +133,7 @@ export default function Shop() {
           {/* TOOLBAR */}
           <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:18, flexWrap:'wrap', gap:10, padding:'12px 16px', background:'#fff', border:'1px solid var(--hops-border)', borderRadius:6 }}>
             <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-              <button onClick={() => setSidebar(true)} style={{ display:'none', alignItems:'center', gap:6, background:'var(--hops-purple-light)', border:'1px solid #e0c8f0', padding:'8px 14px', borderRadius:4, fontSize:13, fontWeight:700, cursor:'pointer', color:'var(--hops-purple)' }} className="mob-filter-btn">
+              <button onClick={() => setSidebar(true)} style={{ display:'none', alignItems:'center', gap:6, background:'var(--hops-purple-light)', border:'1px solid #e0c8f0', padding:'8px 14px', borderRadius:4, fontSize:13, fontWeight:700, cursor:'pointer', color:'var(--bb-blue)' }} className="mob-filter-btn">
                 <SlidersHorizontal size={14}/> Filters
               </button>
               <p style={{ fontSize:13, color:'#888', fontWeight:600 }}>
@@ -144,7 +145,7 @@ export default function Shop() {
               <div style={{ display:'flex', gap:3, border:'1px solid var(--hops-border)', borderRadius:4, overflow:'hidden' }}>
                 {[{ic:<Grid2X2 size={14}/>,v:'grid'},{ic:<List size={14}/>,v:'list'}].map(b => (
                   <button key={b.v} onClick={() => setView(b.v)}
-                    style={{ width:32,height:32,border:'none',background: view===b.v ? 'var(--hops-purple)' : '#fff',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',color: view===b.v ? '#fff' : '#888',transition:'all 0.15s' }}>
+                    style={{ width:32,height:32,border:'none',background: view===b.v ? 'var(--bb-blue)' : '#fff',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',color: view===b.v ? '#fff' : '#888',transition:'all 0.15s' }}>
                     {b.ic}
                   </button>
                 ))}

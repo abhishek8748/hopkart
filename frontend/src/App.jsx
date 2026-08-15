@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation, Link } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
+import { AdminAuthProvider } from './context/AdminAuthContext'
 import Navbar from './components/Navbar'
 import CartDrawer from './components/CartDrawer'
 import Footer from './components/Footer'
@@ -11,6 +12,7 @@ import Wishlist from './pages/Wishlist'
 import Checkout from './pages/Checkout'
 import { OrderSuccess } from './pages/OrderSuccess'
 import SizeChart from './pages/SizeChart'
+import AdminApp from './pages/admin/AdminApp'
 
 function ScrollTop() {
   const { pathname } = useLocation()
@@ -51,9 +53,24 @@ function Layout() {
 export default function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <Layout />
-      </CartProvider>
+      <Routes>
+        <Route
+          path="/admin/*"
+          element={
+            <AdminAuthProvider>
+              <AdminApp />
+            </AdminAuthProvider>
+          }
+        />
+        <Route
+          path="/*"
+          element={
+            <CartProvider>
+              <Layout />
+            </CartProvider>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   )
 }

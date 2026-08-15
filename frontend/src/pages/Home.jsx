@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import ProductCard from '../components/ProductCard'
-import { products } from '../data/products'
+import { useProducts } from '../hooks/useProducts'
 
 const BANNERS = [
-  { bg:'linear-gradient(135deg,#f5eefb 0%,#fde8f4 100%)', title:'New Summer Collection', sub:'Premium kids wear — TENCEL™ Co-ord Sets, Tees & Polos', cta:'Shop Now', path:'/shop', img:'/products/naruto-mint-1.jpg', tag:'Up to 50% OFF', color:'var(--hops-purple)' },
+  { bg:'linear-gradient(135deg,#EEF4FD 0%,#E8F0FF 100%)', title:'New Summer Collection', sub:'Premium kids wear — TENCEL™ Co-ord Sets, Tees & Polos', cta:'Shop Now', path:'/shop', img:'/products/naruto-mint-1.jpg', tag:'Up to 50% OFF', color:'var(--bb-blue)' },
   { bg:'linear-gradient(135deg,#e8f5e9 0%,#e0f2f1 100%)', title:'Dino Rooaar Collection', sub:'TENCEL™ Fabric · All-Over Puff Print · 3 Colours', cta:'Shop Co-ords', path:'/shop?sub=coord-set', img:'/products/dino-pink-1.jpg', tag:'New Drop 🦕', color:'#2e7d32' },
-  { bg:'linear-gradient(135deg,#fff3e0 0%,#fce4ec 100%)', title:'Character Tees', sub:'Naruto · Spider-Man · Looney Tunes · Donald Duck', cta:'Shop T-Shirts', path:'/shop?sub=tshirt', img:'/products/spiderman-white-1.jpg', tag:'Bestsellers 🔥', color:'var(--hops-orange)' },
+  { bg:'linear-gradient(135deg,#FFF8E1 0%,#FEEEEE 100%)', title:'Character Tees', sub:'Naruto · Spider-Man · Looney Tunes · Donald Duck', cta:'Shop T-Shirts', path:'/shop?sub=tshirt', img:'/products/spiderman-white-1.jpg', tag:'Bestsellers 🔥', color:'var(--bb-red)' },
 ]
 
 const COLLECTIONS = [
@@ -24,6 +24,7 @@ const TRUST = [
 ]
 
 export default function Home() {
+  const { products } = useProducts()
   const [slide, setSlide] = useState(0)
   const [activeFilter, setActiveFilter] = useState('all')
   const cur = BANNERS[slide]
@@ -50,7 +51,7 @@ export default function Home() {
         <h2 className="hops-section-title">{title}</h2>
       </div>
       {link && (
-        <Link to={link} style={{ display:'flex', alignItems:'center', gap:5, fontSize:13, fontWeight:700, color:'var(--hops-purple)', marginBottom:10 }}>
+        <Link to={link} style={{ display:'flex', alignItems:'center', gap:5, fontSize:13, fontWeight:700, color:'var(--bb-blue)', marginBottom:10 }}>
           {linkLabel} <ChevronRight size={14} />
         </Link>
       )}
@@ -164,8 +165,8 @@ export default function Home() {
                   style={{
                     padding:'7px 16px', borderRadius:3, fontSize:13, fontWeight:700,
                     border:'1.5px solid',
-                    borderColor: activeFilter === f.id ? 'var(--hops-purple)' : 'var(--hops-border-dark)',
-                    background:  activeFilter === f.id ? 'var(--hops-purple)' : '#fff',
+                    borderColor: activeFilter === f.id ? 'var(--bb-blue)' : 'var(--hops-border-dark)',
+                    background:  activeFilter === f.id ? 'var(--bb-blue)' : '#fff',
                     color:       activeFilter === f.id ? '#fff' : '#555',
                     cursor:'pointer', transition:'all 0.15s',
                   }}>
@@ -180,7 +181,7 @@ export default function Home() {
           </div>
 
           <div style={{ textAlign:'center', marginTop:32 }}>
-            <Link to="/shop" className="hops-btn-primary" style={{ display:'inline-flex', alignItems:'center', gap:7, fontSize:14, fontWeight:800, background:'var(--hops-purple)', color:'#fff', padding:'12px 32px', borderRadius:4, textDecoration:'none' }}>
+            <Link to="/shop" className="hops-btn-primary" style={{ display:'inline-flex', alignItems:'center', gap:7, fontSize:14, fontWeight:800, background:'var(--bb-blue)', color:'#fff', padding:'12px 32px', borderRadius:4, textDecoration:'none' }}>
               View All Products <ArrowRight size={15} />
             </Link>
           </div>
@@ -189,7 +190,7 @@ export default function Home() {
 
       {/* ── PROMO BANNER ── */}
       <section style={{ maxWidth:1280, margin:'48px auto', padding:'0 24px' }}>
-        <div style={{ background:'linear-gradient(135deg, var(--hops-purple) 0%, #9b35b8 100%)', borderRadius:8, padding:'42px 48px', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:24 }}>
+        <div style={{ background:'linear-gradient(135deg, var(--bb-blue) 0%, var(--bb-red) 100%)', borderRadius:8, padding:'42px 48px', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:24 }}>
           <div style={{ color:'#fff' }}>
             <p style={{ fontSize:12, fontWeight:800, opacity:0.8, marginBottom:8, textTransform:'uppercase', letterSpacing:1 }}>Limited Time Offer</p>
             <h2 style={{ fontSize:34, fontWeight:900, lineHeight:1.2, marginBottom:10 }}>Get 20% OFF Your First Order!</h2>
@@ -198,7 +199,7 @@ export default function Home() {
               <strong style={{ background:'rgba(255,255,255,0.2)', padding:'2px 10px', borderRadius:3 }}>BASHABOS20</strong>
               {' '}at checkout
             </p>
-            <Link to="/shop" style={{ background:'#fff', color:'var(--hops-purple)', padding:'12px 28px', borderRadius:4, fontSize:14, fontWeight:800, display:'inline-flex', alignItems:'center', gap:7 }}>
+            <Link to="/shop" style={{ background:'#fff', color:'var(--bb-blue)', padding:'12px 28px', borderRadius:4, fontSize:14, fontWeight:800, display:'inline-flex', alignItems:'center', gap:7 }}>
               Shop Now <ArrowRight size={15} />
             </Link>
           </div>

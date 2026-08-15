@@ -24,7 +24,7 @@ export default function CartDrawer({ open, onClose }) {
         fontFamily:'var(--hops-font)',
       }}>
         {/* HEADER */}
-        <div style={{ padding:'18px 20px', borderBottom:'1px solid var(--hops-border)', display:'flex', alignItems:'center', justifyContent:'space-between', flexShrink:0, background:'var(--hops-purple)' }}>
+        <div style={{ padding:'18px 20px', borderBottom:'1px solid var(--hops-border)', display:'flex', alignItems:'center', justifyContent:'space-between', flexShrink:0, background:'var(--bb-blue)' }}>
           <div style={{ display:'flex', alignItems:'center', gap:9 }}>
             <ShoppingCart size={19} color="#fff" />
             <span style={{ fontSize:17, fontWeight:900, color:'#fff' }}>My Cart</span>
@@ -41,16 +41,16 @@ export default function CartDrawer({ open, onClose }) {
 
         {/* FREE SHIPPING PROGRESS */}
         {cart.length > 0 && (
-          <div style={{ padding:'10px 20px', background:'var(--hops-purple-light)', borderBottom:'1px solid #e0c8f0', flexShrink:0 }}>
+          <div style={{ padding:'10px 20px', background:'var(--bb-blue-light)', borderBottom:'1px solid #c5d9f7', flexShrink:0 }}>
             {total >= 499 ? (
               <p style={{ fontSize:13, fontWeight:700, color:'var(--hops-green)', textAlign:'center' }}>🎉 You've unlocked FREE Shipping!</p>
             ) : (
               <>
                 <p style={{ fontSize:12, fontWeight:600, color:'#666', marginBottom:5 }}>
-                  Add <strong style={{ color:'var(--hops-purple)' }}>₹{499 - total}</strong> more for FREE delivery
+                  Add <strong style={{ color:'var(--bb-blue)' }}>₹{499 - total}</strong> more for FREE delivery
                 </p>
                 <div style={{ background:'#e0c8f0', borderRadius:3, height:5, overflow:'hidden' }}>
-                  <div style={{ height:'100%', background:'var(--hops-purple)', width:`${Math.min((total/499)*100,100)}%`, transition:'width 0.4s', borderRadius:3 }} />
+                  <div style={{ height:'100%', background:'var(--bb-blue)', width:`${Math.min((total/499)*100,100)}%`, transition:'width 0.4s', borderRadius:3 }} />
                 </div>
               </>
             )}
