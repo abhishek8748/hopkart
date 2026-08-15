@@ -5,14 +5,12 @@ import {
   ChevronRight, ChevronLeft, ChevronDown, ChevronUp,
   Share2, MapPin, CheckCircle, ZoomIn, X
 } from 'lucide-react'
-import { sizeChart, reviews } from '../data/products'
-import { useProducts } from '../hooks/useProducts'
+import { products, sizeChart, reviews } from '../data/products'
 import { useCart } from '../context/CartContext'
 import ProductCard from '../components/ProductCard'
 
 export default function ProductDetail() {
   const { id } = useParams()
-  const { products, loading } = useProducts()
   const product = products.find(p => p.id === Number(id))
   const { add, toggleWish, isWished } = useCart()
 
@@ -29,10 +27,6 @@ export default function ProductDetail() {
   const [helpfuls, setHelpfuls]   = useState({})
   const [copied, setCopied]       = useState(false)
   const [openSec, setOpenSec]     = useState({ desc:true, care:false, returns:false })
-
-  if (loading) return (
-    <div style={{ textAlign:'center', padding:'100px 20px', color:'#888' }}>Loading…</div>
-  )
 
   if (!product) return (
     <div style={{ textAlign:'center', padding:'100px 20px' }}>

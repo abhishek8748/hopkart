@@ -32,7 +32,7 @@ export default function ProductCard({ product, layout = 'grid' }) {
           {product.images?.[0] && <img src={product.images[0]} alt={product.name} style={{ width:'100%',height:'100%',objectFit:'cover',objectPosition:'top center' }} />}
         </div>
         <div style={{ flex:1 }}>
-          <p style={{ fontSize:11, fontWeight:800, color:'var(--bb-blue)', textTransform:'uppercase', letterSpacing:0.5, marginBottom:3 }}>{product.brand}</p>
+          <p style={{ fontSize:11, fontWeight:800, color:'var(--hops-purple)', textTransform:'uppercase', letterSpacing:0.5, marginBottom:3 }}>{product.brand}</p>
           <p style={{ fontSize:15, fontWeight:800, color:'#222', marginBottom:4 }}>{product.name}</p>
           <p style={{ fontSize:12, color:'#888', fontWeight:600, marginBottom:8 }}>{product.color} · {product.ageRange}</p>
           <div style={{ display:'flex', alignItems:'center', gap:8 }}>
@@ -42,7 +42,7 @@ export default function ProductCard({ product, layout = 'grid' }) {
           </div>
         </div>
         <button onClick={handleAdd}
-          style={{ background: added ? 'var(--hops-green)' : 'var(--bb-blue)', color:'#fff', border:'none', borderRadius:4, padding:'10px 16px', fontSize:12, fontWeight:800, cursor:'pointer', flexShrink:0, alignSelf:'center', transition:'background 0.2s' }}>
+          style={{ background: added ? 'var(--hops-green)' : 'var(--hops-purple)', color:'#fff', border:'none', borderRadius:4, padding:'10px 16px', fontSize:12, fontWeight:800, cursor:'pointer', flexShrink:0, alignSelf:'center', transition:'background 0.2s' }}>
           {added ? '✓ Added' : 'Add to Cart'}
         </button>
       </Link>
@@ -75,13 +75,13 @@ export default function ProductCard({ product, layout = 'grid' }) {
               style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'top center', transition:'transform 0.4s', transform: hovered ? 'scale(1.04)' : 'scale(1)' }}
             />
           ) : (
-            <div style={{ width:'100%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center', background:'var(--hops-purple-light)', fontSize:56, fontWeight:900, color:'var(--bb-blue)', opacity:0.2 }}>B</div>
+            <div style={{ width:'100%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center', background:'var(--hops-purple-light)', fontSize:56, fontWeight:900, color:'var(--hops-purple)', opacity:0.2 }}>B</div>
           )}
 
           {/* TOP-LEFT BADGES — Hopscotch style */}
           <div style={{ position:'absolute', top:9, left:9, display:'flex', flexDirection:'column', gap:5 }}>
             {disc > 0 && (
-              <span style={{ background:'var(--bb-yellow)', color:'#fff', fontSize:11, fontWeight:800, padding:'3px 8px', borderRadius:3 }}>
+              <span style={{ background:'var(--hops-orange)', color:'#fff', fontSize:11, fontWeight:800, padding:'3px 8px', borderRadius:3 }}>
                 {disc}% OFF
               </span>
             )}
@@ -99,14 +99,14 @@ export default function ProductCard({ product, layout = 'grid' }) {
               position:'absolute', top:9, right:9,
               width:32, height:32, borderRadius:'50%',
               background: wished ? 'var(--hops-pink-light)' : 'rgba(255,255,255,0.92)',
-              border: wished ? '1px solid var(--bb-red)' : '1px solid #ddd',
+              border: wished ? '1px solid var(--hops-pink)' : '1px solid #ddd',
               display:'flex', alignItems:'center', justifyContent:'center',
               boxShadow:'0 1px 4px rgba(0,0,0,0.1)',
               transition:'all 0.15s',
               cursor:'pointer',
             }}
           >
-            <Heart size={15} fill={wished ? 'var(--bb-red)' : 'none'} color={wished ? 'var(--bb-red)' : '#888'} />
+            <Heart size={15} fill={wished ? 'var(--hops-pink)' : 'none'} color={wished ? 'var(--hops-pink)' : '#888'} />
           </button>
 
           {/* COLOUR TAG — bottom left, Hopscotch style */}
@@ -125,7 +125,7 @@ export default function ProductCard({ product, layout = 'grid' }) {
           {/* ADD TO CART overlay on hover */}
           <div style={{
             position:'absolute', bottom:0, left:0, right:0,
-            background: added ? 'var(--hops-green)' : 'var(--bb-blue)',
+            background: added ? 'var(--hops-green)' : 'var(--hops-purple)',
             color:'#fff',
             padding:'11px',
             fontSize:13, fontWeight:800,
@@ -143,7 +143,7 @@ export default function ProductCard({ product, layout = 'grid' }) {
         <div style={{ padding:'11px 12px 13px' }}>
 
           {/* Brand */}
-          <p style={{ fontSize:10, fontWeight:800, color:'var(--bb-blue)', textTransform:'uppercase', letterSpacing:0.6, marginBottom:3 }}>
+          <p style={{ fontSize:10, fontWeight:800, color:'var(--hops-purple)', textTransform:'uppercase', letterSpacing:0.6, marginBottom:3 }}>
             {product.brand}
           </p>
 
@@ -174,7 +174,7 @@ export default function ProductCard({ product, layout = 'grid' }) {
 
           {/* Fabric badge */}
           {product.fabric && (
-            <span style={{ display:'inline-block', marginTop:7, background:'var(--hops-purple-light)', color:'var(--bb-blue)', fontSize:10, fontWeight:800, padding:'2px 8px', borderRadius:2, border:'1px solid #e0c8f0' }}>
+            <span style={{ display:'inline-block', marginTop:7, background:'var(--hops-purple-light)', color:'var(--hops-purple)', fontSize:10, fontWeight:800, padding:'2px 8px', borderRadius:2, border:'1px solid #e0c8f0' }}>
               {product.fabric}
             </span>
           )}

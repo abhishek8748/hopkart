@@ -56,10 +56,8 @@ export default function Checkout() {
           phone: form.phone,
           email: form.email,
           address1: form.address,
-          address2: '',
+          address2: form.city,
           landmark: '',
-          city: form.city,
-          state: form.state,
           pincode: form.pincode,
         },
         items: cart.map(it => ({ name: it.name, quantity: it.qty, price: it.price })),
@@ -87,12 +85,12 @@ export default function Checkout() {
     <div style={{ textAlign:'center', padding:'100px 20px' }}>
       <div style={{ fontSize:64, marginBottom:16 }}>🛒</div>
       <h2 style={{ fontSize:22, fontWeight:800, marginBottom:12 }}>Cart is empty!</h2>
-      <Link to="/shop" style={{ background:'var(--bb-blue)', color:'#fff', padding:'12px 28px', borderRadius:50, fontWeight:800, fontSize:14, textDecoration:'none', display:'inline-block', marginTop:8 }}>Browse Products</Link>
+      <Link to="/shop" style={{ background:'var(--purple)', color:'#fff', padding:'12px 28px', borderRadius:50, fontWeight:800, fontSize:14, textDecoration:'none', display:'inline-block', marginTop:8 }}>Browse Products</Link>
     </div>
   )
 
   const inp = (err) => ({
-    width:'100%', padding:'11px 13px', border:`1.5px solid ${err?'var(--bb-red)':'#e5e7eb'}`, borderRadius:8,
+    width:'100%', padding:'11px 13px', border:`1.5px solid ${err?'var(--red)':'#e5e7eb'}`, borderRadius:8,
     fontSize:13, fontWeight:600, outline:'none', fontFamily:'Nunito,sans-serif', color:'#111',
     background: err ? '#fef2f2' : '#fafafa', transition:'border-color 0.2s'
   })
@@ -115,7 +113,7 @@ export default function Checkout() {
           {/* ADDRESS */}
           <div style={{ background:'#fff', border:'1px solid #f0f0f0', borderRadius:14, padding:24 }}>
             <h2 style={{ fontSize:16, fontWeight:900, color:'#111', marginBottom:20, display:'flex', alignItems:'center', gap:8 }}>
-              <MapPin size={17} color="var(--bb-blue)"/> Delivery Address
+              <MapPin size={17} color="var(--purple)"/> Delivery Address
             </h2>
             <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:14 }}>
               {[
@@ -129,10 +127,10 @@ export default function Checkout() {
                     <div style={{ position:'absolute', left:11, pointerEvents:'none' }}>{f.ic}</div>
                     <input name={f.n} type={f.t||'text'} placeholder={f.ph} value={form[f.n]} onChange={ch} maxLength={f.max}
                       style={{ ...inp(errs[f.n]), paddingLeft:32 }}
-                      onFocus={e => e.target.style.borderColor='var(--bb-blue)'}
-                      onBlur={e => e.target.style.borderColor=errs[f.n]?'var(--bb-red)':'#e5e7eb'} />
+                      onFocus={e => e.target.style.borderColor='var(--purple)'}
+                      onBlur={e => e.target.style.borderColor=errs[f.n]?'var(--red)':'#e5e7eb'} />
                   </div>
-                  {errs[f.n] && <p style={{ fontSize:11, color:'var(--bb-red)', fontWeight:700, marginTop:3 }}>{errs[f.n]}</p>}
+                  {errs[f.n] && <p style={{ fontSize:11, color:'var(--red)', fontWeight:700, marginTop:3 }}>{errs[f.n]}</p>}
                 </div>
               ))}
 
@@ -140,9 +138,9 @@ export default function Checkout() {
                 <label style={{ fontSize:11, fontWeight:800, color:'#666', display:'block', marginBottom:5, textTransform:'uppercase', letterSpacing:0.4 }}>Full Address *</label>
                 <textarea name="address" placeholder="House No, Street, Area, Landmark" value={form.address} onChange={ch} rows={3}
                   style={{ ...inp(errs.address), resize:'vertical', minHeight:78 }}
-                  onFocus={e => e.target.style.borderColor='var(--bb-blue)'}
-                  onBlur={e => e.target.style.borderColor=errs.address?'var(--bb-red)':'#e5e7eb'} />
-                {errs.address && <p style={{ fontSize:11, color:'var(--bb-red)', fontWeight:700, marginTop:3 }}>{errs.address}</p>}
+                  onFocus={e => e.target.style.borderColor='var(--purple)'}
+                  onBlur={e => e.target.style.borderColor=errs.address?'var(--red)':'#e5e7eb'} />
+                {errs.address && <p style={{ fontSize:11, color:'var(--red)', fontWeight:700, marginTop:3 }}>{errs.address}</p>}
               </div>
 
               {[
@@ -153,21 +151,21 @@ export default function Checkout() {
                   <label style={{ fontSize:11, fontWeight:800, color:'#666', display:'block', marginBottom:5, textTransform:'uppercase', letterSpacing:0.4 }}>{f.l}</label>
                   <input name={f.n} type={f.t||'text'} placeholder={f.ph} value={form[f.n]} onChange={ch} maxLength={f.max}
                     style={inp(errs[f.n])}
-                    onFocus={e => e.target.style.borderColor='var(--bb-blue)'}
-                    onBlur={e => e.target.style.borderColor=errs[f.n]?'var(--bb-red)':'#e5e7eb'} />
-                  {errs[f.n] && <p style={{ fontSize:11, color:'var(--bb-red)', fontWeight:700, marginTop:3 }}>{errs[f.n]}</p>}
+                    onFocus={e => e.target.style.borderColor='var(--purple)'}
+                    onBlur={e => e.target.style.borderColor=errs[f.n]?'var(--red)':'#e5e7eb'} />
+                  {errs[f.n] && <p style={{ fontSize:11, color:'var(--red)', fontWeight:700, marginTop:3 }}>{errs[f.n]}</p>}
                 </div>
               ))}
 
               <div>
                 <label style={{ fontSize:11, fontWeight:800, color:'#666', display:'block', marginBottom:5, textTransform:'uppercase', letterSpacing:0.4 }}>State *</label>
                 <select name="state" value={form.state} onChange={ch} style={{ ...inp(errs.state), cursor:'pointer' }}
-                  onFocus={e => e.target.style.borderColor='var(--bb-blue)'}
-                  onBlur={e => e.target.style.borderColor=errs.state?'var(--bb-red)':'#e5e7eb'}>
+                  onFocus={e => e.target.style.borderColor='var(--purple)'}
+                  onBlur={e => e.target.style.borderColor=errs.state?'var(--red)':'#e5e7eb'}>
                   <option value="">Select State</option>
                   {STATES.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
-                {errs.state && <p style={{ fontSize:11, color:'var(--bb-red)', fontWeight:700, marginTop:3 }}>{errs.state}</p>}
+                {errs.state && <p style={{ fontSize:11, color:'var(--red)', fontWeight:700, marginTop:3 }}>{errs.state}</p>}
               </div>
             </div>
           </div>
@@ -175,7 +173,7 @@ export default function Checkout() {
           {/* PAYMENT METHODS */}
           <div style={{ background:'#fff', border:'1px solid #f0f0f0', borderRadius:14, padding:24 }}>
             <h2 style={{ fontSize:16, fontWeight:900, color:'#111', marginBottom:16, display:'flex', alignItems:'center', gap:8 }}>
-              <Lock size={17} color="var(--bb-blue)"/> Payment Method
+              <Lock size={17} color="var(--purple)"/> Payment Method
             </h2>
             <p style={{ fontSize:13, color:'#999', fontWeight:600, marginBottom:14 }}>All payments processed securely via Razorpay</p>
             <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
@@ -192,11 +190,11 @@ export default function Checkout() {
                     <p style={{ fontSize:13, fontWeight:800, color:'#111' }}>{m.l}</p>
                     <p style={{ fontSize:11, color:'#999', fontWeight:600 }}>{m.s}</p>
                   </div>
-                  <span style={{ color:'var(--hops-green)', fontWeight:800 }}>✓</span>
+                  <span style={{ color:'var(--green)', fontWeight:800 }}>✓</span>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize:12, color:'#555', fontWeight:600, marginTop:14, background:'var(--hops-green-light)', padding:'10px 13px', borderRadius:8, lineHeight:1.6 }}>
+            <p style={{ fontSize:12, color:'#555', fontWeight:600, marginTop:14, background:'var(--green-light)', padding:'10px 13px', borderRadius:8, lineHeight:1.6 }}>
               🔒 Your payment is 256-bit SSL encrypted and processed securely via <strong>Razorpay</strong>. Card details are never stored.
             </p>
           </div>
@@ -205,7 +203,7 @@ export default function Checkout() {
         {/* RIGHT — ORDER SUMMARY */}
         <div style={{ background:'#fff', border:'1px solid #f0f0f0', borderRadius:14, padding:22, position:'sticky', top:80 }}>
           <h2 style={{ fontSize:16, fontWeight:900, color:'#111', marginBottom:18, display:'flex', alignItems:'center', gap:8 }}>
-            <ShoppingBag size={17} color="var(--bb-blue)"/> Order Summary
+            <ShoppingBag size={17} color="var(--purple)"/> Order Summary
           </h2>
 
           {/* ITEMS */}
@@ -222,7 +220,7 @@ export default function Checkout() {
                     <p style={{ fontSize:10, color:'#999', fontWeight:600, marginBottom:4 }}>{item.color} · Size: {item.size} · Qty: {item.qty}</p>
                     <div style={{ display:'flex', alignItems:'center', gap:5 }}>
                       <span style={{ fontSize:14, fontWeight:900, color:'#111' }}>₹{item.price * item.qty}</span>
-                      <span style={{ fontSize:10, color:'var(--hops-green)', fontWeight:800 }}>{d}% off</span>
+                      <span style={{ fontSize:10, color:'var(--green)', fontWeight:800 }}>{d}% off</span>
                     </div>
                   </div>
                 </div>
@@ -241,7 +239,7 @@ export default function Checkout() {
               </div>
               <button onClick={applyCoupon} style={{ background:'#111', color:'#fff', border:'none', padding:'9px 14px', borderRadius:8, fontSize:12, fontWeight:800, cursor:'pointer', whiteSpace:'nowrap' }}>Apply</button>
             </div>
-            {applied && <p style={{ fontSize:11, color:'var(--hops-green)', fontWeight:800, marginTop:5 }}>🎉 {applied.code} applied! {applied.pct}% off</p>}
+            {applied && <p style={{ fontSize:11, color:'var(--green)', fontWeight:800, marginTop:5 }}>🎉 {applied.code} applied! {applied.pct}% off</p>}
             <p style={{ fontSize:10, color:'#bbb', fontWeight:600, marginTop:4 }}>Try: BASHABOS20 · KIDSFUN20</p>
           </div>
 
@@ -252,21 +250,21 @@ export default function Checkout() {
             </div>
             <div style={{ display:'flex', justifyContent:'space-between', fontSize:13, fontWeight:600, color:'#666' }}>
               <span>Shipping</span>
-              <span style={{ color: shipping===0 ? 'var(--hops-green)' : '#666', fontWeight: shipping===0 ? 800 : 600 }}>{shipping===0?'FREE 🎉':`₹${shipping}`}</span>
+              <span style={{ color: shipping===0 ? 'var(--green)' : '#666', fontWeight: shipping===0 ? 800 : 600 }}>{shipping===0?'FREE 🎉':`₹${shipping}`}</span>
             </div>
             {disc > 0 && (
-              <div style={{ display:'flex', justifyContent:'space-between', fontSize:13, fontWeight:700, color:'var(--hops-green)' }}>
+              <div style={{ display:'flex', justifyContent:'space-between', fontSize:13, fontWeight:700, color:'var(--green)' }}>
                 <span>Coupon Discount</span><span>−₹{disc}</span>
               </div>
             )}
             <div style={{ display:'flex', justifyContent:'space-between', fontSize:18, fontWeight:900, color:'#111', borderTop:'1px solid #e5e7eb', paddingTop:10, marginTop:4 }}>
               <span>Total</span><span>₹{grand}</span>
             </div>
-            {disc > 0 && <p style={{ fontSize:11, color:'var(--hops-green)', fontWeight:700 }}>✅ You're saving ₹{disc + (total>=499?49:0)} on this order!</p>}
+            {disc > 0 && <p style={{ fontSize:11, color:'var(--green)', fontWeight:700 }}>✅ You're saving ₹{disc + (total>=499?49:0)} on this order!</p>}
           </div>
 
           <button onClick={pay} disabled={loading}
-            style={{ width:'100%', background: loading ? '#ccc' : '#000', color:'#fff', border:'none', padding:'15px', borderRadius:50, fontSize:15, fontWeight:900, cursor: loading ? 'not-allowed' : 'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8, marginBottom:10, transition:'background 0.2s' }}>
+            style={{ width:'100%', background: loading ? '#ccc' : 'var(--purple)', color:'#fff', border:'none', padding:'15px', borderRadius:50, fontSize:15, fontWeight:900, cursor: loading ? 'not-allowed' : 'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8, marginBottom:10, transition:'background 0.2s' }}>
             <Lock size={16}/> {loading ? 'Opening Payment...' : `Pay ₹${grand} Securely`}
           </button>
           <div style={{ display:'flex', justifyContent:'center', gap:18, fontSize:11, fontWeight:700, color:'#bbb' }}>
